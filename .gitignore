@@ -1,0 +1,7 @@
+#editor
+.vscode
+.idea
+
+#environment
+config.json
+

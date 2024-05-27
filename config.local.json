@@ -1,0 +1,16 @@
+{
+  "debug": true,
+  "server": {
+    "port": 8080,
+    "timezone": "Asia/Jakarta"
+  },
+  "database": {
+    "driver": "postgres",
+    "user": "postgres",
+    "password": "yourpassword",
+    "host": "localhost",
+    "port": 5432,
+    "name": "go-full",
+    "ssl": "disable"
+  }
+}
