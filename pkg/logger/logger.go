@@ -8,7 +8,7 @@ import (
 var Logger = logrus.New()
 
 func init() {
-	// Set the output of logs to standard output
+	// Set the output of gRPC to standard output
 	Logger.SetOutput(os.Stdout)
 	// Set the logger level
 	Logger.SetLevel(logrus.InfoLevel)

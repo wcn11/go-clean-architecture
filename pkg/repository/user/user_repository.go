@@ -2,7 +2,7 @@ package user
 
 import (
 	"context"
-	"full/pkg/domain"
+	"go-clean-architecture/pkg/domain"
 )
 
 type IUserRepository interface {

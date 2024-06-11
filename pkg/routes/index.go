@@ -1,10 +1,10 @@
 package routes
 
 import (
-	"full/pkg/controllers"
-	middleware2 "full/pkg/middleware"
-	"full/pkg/usecase/user"
 	"github.com/gorilla/mux"
+	"go-clean-architecture/pkg/controllers"
+	middleware2 "go-clean-architecture/pkg/middleware"
+	"go-clean-architecture/pkg/usecase/user"
 )
 
 func InitRouter(userService user.IUserService) *mux.Router {

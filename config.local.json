@@ -10,7 +10,7 @@
     "password": "yourpassword",
     "host": "localhost",
     "port": 5432,
-    "name": "go-full",
+    "name": "go-go-clean-architecture",
     "ssl": "disable"
   }
 }

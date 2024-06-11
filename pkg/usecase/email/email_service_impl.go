@@ -1,6 +1,6 @@
 package email
 
-import "full/pkg/logger"
+import "go-clean-architecture/pkg/logger"
 
 type EmailServiceImpl struct{}
 

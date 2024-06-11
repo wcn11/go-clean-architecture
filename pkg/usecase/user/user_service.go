@@ -2,8 +2,8 @@ package user
 
 import (
 	"context"
-	"full/pkg/domain"
-	"full/pkg/dto"
+	"go-clean-architecture/pkg/domain"
+	"go-clean-architecture/pkg/dto"
 )
 
 type IUserService interface {

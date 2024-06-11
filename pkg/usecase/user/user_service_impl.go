@@ -2,11 +2,11 @@ package user
 
 import (
 	"context"
-	"full/pkg/domain"
-	"full/pkg/dto"
-	"full/pkg/logger"
-	"full/pkg/repository/user"
-	"full/pkg/usecase/email"
+	"go-clean-architecture/pkg/domain"
+	"go-clean-architecture/pkg/dto"
+	"go-clean-architecture/pkg/logger"
+	"go-clean-architecture/pkg/repository/user"
+	"go-clean-architecture/pkg/usecase/email"
 	"time"
 )
 

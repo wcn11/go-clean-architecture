@@ -1,13 +1,13 @@
 package config
 
 import (
-	"full/pkg/controllers"
-	"full/pkg/logger"
-	userRepo "full/pkg/repository/user"
-	"full/pkg/routes"
-	emailService "full/pkg/usecase/email"
-	userService "full/pkg/usecase/user"
 	"github.com/sirupsen/logrus"
+	"go-clean-architecture/pkg/controllers"
+	"go-clean-architecture/pkg/logger"
+	userRepo "go-clean-architecture/pkg/repository/user"
+	"go-clean-architecture/pkg/routes"
+	emailService "go-clean-architecture/pkg/usecase/email"
+	userService "go-clean-architecture/pkg/usecase/user"
 	"go.uber.org/dig"
 	"gorm.io/gorm"
 )

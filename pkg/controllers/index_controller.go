@@ -3,8 +3,8 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"full/pkg/dto"
-	"full/pkg/usecase/user"
+	"go-clean-architecture/pkg/dto"
+	"go-clean-architecture/pkg/usecase/user"
 	"log"
 	"net/http"
 )

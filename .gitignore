@@ -1,7 +1,7 @@
 #editor
 .vscode
 .idea
+.DS_Store
 
 #environment
 config.json
-

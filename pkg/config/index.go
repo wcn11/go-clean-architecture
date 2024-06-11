@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"github.com/spf13/viper"
 	"log"
 )
@@ -30,22 +31,23 @@ var AppConfig Config
 func InitConfig() {
 	viper.SetConfigName("config")
 	viper.SetConfigType("json")
-
-	// Adding multiple config paths
-	viper.AddConfigPath(".")
-	viper.AddConfigPath("./configs")  // Add additional paths as needed
-	viper.AddConfigPath("/etc/myapp") // Example for Unix-based systems
+	viper.AddConfigPath("./")
 
 	// Set default values
 	viper.SetDefault("Server.Port", 8080)
 	viper.SetDefault("Database.Driver", "postgres")
 
+	// Adding multiple config paths
+	//viper.AddConfigPath(".")
+	//viper.AddConfigPath("./config")   // Add additional paths as needed
+	//viper.AddConfigPath("/etc/myapp") // Example for Unix-based systems
+
 	// Automatically override config with environment variables if set
-	viper.AutomaticEnv()
-	viper.SetEnvPrefix("myapp")
-	viper.BindEnv("Server.Port", "MYAPP_SERVER_PORT")
-	viper.BindEnv("Database.User", "MYAPP_DB_USER")
-	viper.BindEnv("Database.Password", "MYAPP_DB_PASSWORD")
+	//viper.AutomaticEnv()
+	//viper.SetEnvPrefix("myapp")
+	//viper.BindEnv("Server.Port", "MYAPP_SERVER_PORT")
+	//viper.BindEnv("Database.User", "MYAPP_DB_USER")
+	//viper.BindEnv("Database.Password", "MYAPP_DB_PASSWORD")
 
 	err := viper.ReadInConfig()
 	if err != nil {
@@ -60,6 +62,8 @@ func InitConfig() {
 		log.Fatalf("Unable to decode config into struct: %v", err)
 	}
 
+	fmt.Println(AppConfig.Database.Name)
+
 	// Optional: Log the effective configuration for debugging purposes
-	log.Printf("Configuration loaded: %+v", AppConfig)
+	log.Printf("Configuration loaded")
 }
