@@ -3,11 +3,11 @@ module go-clean-architecture
 go 1.21
 
 require (
+	github.com/google/wire v0.6.0
 	github.com/gorilla/mux v1.8.1
 	github.com/lib/pq v1.10.9
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/viper v1.18.2
-	go.uber.org/dig v1.17.1
 	google.golang.org/grpc v1.62.0
 	google.golang.org/protobuf v1.32.0
 	gorm.io/driver/postgres v1.5.7

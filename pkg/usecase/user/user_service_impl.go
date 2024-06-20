@@ -4,74 +4,43 @@ import (
 	"context"
 	"go-clean-architecture/pkg/domain"
 	"go-clean-architecture/pkg/dto"
-	"go-clean-architecture/pkg/logger"
 	"go-clean-architecture/pkg/repository/user"
-	"go-clean-architecture/pkg/usecase/email"
 	"time"
 )
 
 type UserServiceImpl struct {
-	userRepository user.IUserRepository
-	emailService   email.IEmailService
+	UserRepository user.IUserRepository
 }
 
-func NewUserService(repo user.IUserRepository, emailSvc email.IEmailService) IUserService {
+func NewUserService(userRepo user.IUserRepository) *UserServiceImpl {
 	return &UserServiceImpl{
-		userRepository: repo,
-		emailService:   emailSvc,
+		UserRepository: userRepo,
 	}
 }
 
 func (u *UserServiceImpl) GetUserById(ctx context.Context, id int) (*dto.UserResponse, error) {
-	userData, err := u.userRepository.GetUserByID(ctx, id)
-
-	if err != nil {
-		logger.Fatalf("Error while fetching user by ID: %s", id)
-	}
-
 	return &dto.UserResponse{
-		ID:        userData.ID,
-		Name:      userData.Name,
-		Phone:     userData.Phone,
-		Gender:    userData.Gender,
-		Email:     userData.Email,
-		CreatedAt: userData.CreatedAt,
-		UpdatedAt: userData.UpdatedAt,
+		ID:        uint(id),
+		Name:      "wcn",
+		Phone:     "089123123",
+		Gender:    1,
+		Email:     "wewer@@gmai.cw",
+		CreatedAt: time.Now(),
+		UpdatedAt: time.Now(),
 	}, nil
 }
 
 func (u *UserServiceImpl) CreateUser(ctx context.Context, userDto *dto.CreateUserRequest) (*dto.UserResponse, error) {
-	createUser := &domain.User{
-		Name:      userDto.Name,
-		Phone:     userDto.Phone,
-		Gender:    userDto.Gender,
-		Email:     userDto.Email,
-		Password:  userDto.Password,
-		CreatedAt: time.Now(),
-		UpdatedAt: time.Now(),
-	}
-
-	userResponse, err := u.userRepository.CreateUser(ctx, createUser)
-	if err != nil {
-		return nil, err
-	}
-
-	return &dto.UserResponse{
-		ID:        userResponse.ID,
-		Name:      userResponse.Name,
-		Phone:     userResponse.Phone,
-		Gender:    userResponse.Gender,
-		Email:     userResponse.Email,
-		CreatedAt: userResponse.CreatedAt,
-		UpdatedAt: userResponse.UpdatedAt,
-	}, nil
+	//TODO implement me
+	panic("implement me")
 }
 
 func (u *UserServiceImpl) UpdateUser(ctx context.Context, user *domain.User) error {
+	//TODO implement me
 	panic("implement me")
 }
 
 func (u *UserServiceImpl) DeleteUser(ctx context.Context, id int) error {
-	// TODO: implement me
+	//TODO implement me
 	panic("implement me")
 }

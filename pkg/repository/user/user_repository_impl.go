@@ -6,27 +6,29 @@ import (
 	"gorm.io/gorm"
 )
 
-type RepositoryImpl struct {
+type UserRepositoryImpl struct {
 	db *gorm.DB
 }
 
-func NewUserRepository(db *gorm.DB) IUserRepository {
-	return &RepositoryImpl{db: db}
+func NewUserRepository(db *gorm.DB) *UserRepositoryImpl {
+	return &UserRepositoryImpl{
+		db: db,
+	}
 }
 
-func (r *RepositoryImpl) GetUserByID(ctx context.Context, id int) (*domain.User, error) {
+func (r *UserRepositoryImpl) GetUserByID(ctx context.Context, id int) (*domain.User, error) {
 	var user domain.User
-	err := r.db.WithContext(ctx).First(&user, id).Error
-	if err != nil {
-		return nil, err
-	}
+	//err := r.db.WithContext(ctx).First(&user, id).Error
+	//if err != nil {
+	//	return nil, err
+	//}
 	return &user, nil
 }
 
-func (r *RepositoryImpl) CreateUser(ctx context.Context, user *domain.User) (*domain.User, error) {
-	err := r.db.WithContext(ctx).Create(user).Error
-	if err != nil {
-		return nil, err
-	}
+func (r *UserRepositoryImpl) CreateUser(ctx context.Context, user *domain.User) (*domain.User, error) {
+	//err := r.db.WithContext(ctx).Create(user).Error
+	//if err != nil {
+	//	return nil, err
+	//}
 	return user, nil
 }
