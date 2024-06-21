@@ -18,8 +18,6 @@ func GetDB(viper *viper.Viper) *gorm.DB {
 	database := viper.GetString("database.name")
 	ssl := viper.GetString("database.ssl")
 
-	fmt.Sprintf("user: %s ", username)
-
 	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=%s",
 		host, port, username, password, database, ssl)
 
@@ -31,5 +29,4 @@ func GetDB(viper *viper.Viper) *gorm.DB {
 	log.Println("Database connection established")
 
 	return db
-	//return db
 }

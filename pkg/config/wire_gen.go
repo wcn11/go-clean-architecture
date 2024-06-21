@@ -10,6 +10,7 @@ import (
 	"github.com/google/wire"
 	"go-clean-architecture/pkg/controllers"
 	"go-clean-architecture/pkg/repository/user"
+	"go-clean-architecture/pkg/uow"
 	user2 "go-clean-architecture/pkg/usecase/user"
 )
 
@@ -23,7 +24,8 @@ func InitInjector() *controllers.UserController {
 	viper := ViperConfig()
 	db := GetDB(viper)
 	userRepositoryImpl := user.NewUserRepository(db)
-	userServiceImpl := user2.NewUserService(userRepositoryImpl)
+	unitOfWorkImpl := uow.NewUowImpl(db)
+	userServiceImpl := user2.NewUserService(userRepositoryImpl, unitOfWorkImpl)
 	userController := controllers.NewUserController(userServiceImpl)
 	return userController
 }
@@ -32,5 +34,5 @@ func InitInjector() *controllers.UserController {
 
 var group = wire.NewSet(
 	ViperConfig,
-	GetDB, wire.Bind(new(user.IUserRepository), new(*user.UserRepositoryImpl)), user.NewUserRepository, wire.Bind(new(user2.IUserService), new(*user2.UserServiceImpl)), user2.NewUserService, controllers.NewUserController,
+	GetDB, wire.Bind(new(user.IUserRepository), new(*user.UserRepositoryImpl)), uow.NewUowImpl, wire.Bind(new(uow.UnitOfWork), new(*uow.UnitOfWorkImpl)), user.NewUserRepository, wire.Bind(new(user2.IUserService), new(*user2.UserServiceImpl)), user2.NewUserService, controllers.NewUserController,
 )
