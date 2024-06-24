@@ -20,7 +20,7 @@ var group = wire.NewSet(
 	controllers.NewUserController,
 )
 
-func InitInjector() *controllers.UserController {
+func InitUserInjector() *controllers.UserController {
 	// Build the dependency graph using the wire set
 	wire.Build(group)
 

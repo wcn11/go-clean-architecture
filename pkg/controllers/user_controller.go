@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"fmt"
+	"github.com/sirupsen/logrus"
 	"go-clean-architecture/pkg/usecase/user"
 	"log"
 	"net/http"
@@ -17,7 +18,7 @@ func NewUserController(userService user.IUserService) *UserController {
 	}
 }
 
-func (c *UserController) Index(w http.ResponseWriter, r *http.Request) {
+func (c *UserController) FindById(w http.ResponseWriter, r *http.Request) {
 	defer func() {
 		if err := recover(); err != nil {
 			log.Printf("Panic: %v", err)
@@ -34,5 +35,8 @@ func (c *UserController) Index(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Assuming userResponse.Name is a string
-	fmt.Fprintf(w, "User Name: %s", userResponse.Name)
+	_, err = fmt.Fprintf(w, "User Name: %s", userResponse.Name)
+	if err != nil {
+		logrus.Fatal(err)
+	}
 }

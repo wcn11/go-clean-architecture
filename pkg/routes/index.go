@@ -8,9 +8,9 @@ import (
 func InitRouter() *mux.Router {
 	router := mux.NewRouter()
 
-	indexController := config.InitInjector()
+	userController := config.InitUserInjector()
 
-	router.HandleFunc("/", indexController.Index).Methods("GET")
+	router.HandleFunc("/", userController.FindById).Methods("GET")
 	// Add other routes as needed
 
 	return router

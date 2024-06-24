@@ -9,13 +9,13 @@ import (
 
 func main() {
 	// Initialize the configuration.
-	config.ViperConfig()
+	viperConfig := config.ViperConfig()
 
 	// Initialize the router
 	r := routes.InitRouter()
 
 	// Retrieve the server port from configuration
-	port := config.ViperConfig().GetInt("server.port")
+	port := viperConfig.GetInt("server.port")
 	fmt.Printf("Starting server on port %d...\n", port)
 
 	// Start the HTTP server.
